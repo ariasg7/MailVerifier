@@ -47,7 +47,7 @@ export function Navigation() {
           </div>
           
           <Link
-            href="/signup"
+            href="/authentication" // Change this from /signup to /authentication
             className="bg-[#0070F3] text-white px-6 py-2.5 hover:bg-white hover:text-[#0A192F] transition-all text-xs font-black uppercase tracking-widest rounded-sm flex items-center gap-2 group"
           >
             <Terminal size={14} className="group-hover:animate-bounce" />
