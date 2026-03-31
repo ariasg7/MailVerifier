@@ -53,7 +53,9 @@ export function Hero() {
           {/* Headline with fixed line logic */}
           <h1 className="text-[#0A192F] mb-8 font-inter tracking-tighter leading-[1.1] font-[900] text-[42px] sm:text-[64px] lg:text-[84px]">
             <span className="whitespace-nowrap">Built for Teams</span> <br/>
-            <span className="text-[#0070F3] whitespace-nowrap">That Send Millions.</span>
+            <span className="text-[#0070F3] inline-block whitespace-nowrap">
+  That Send <span className="tracking-normal"><br></br>Millions.</span>
+</span>
           </h1>
 
           <p className="text-slate-500 mb-10 max-w-lg font-inter text-lg md:text-xl leading-relaxed">
