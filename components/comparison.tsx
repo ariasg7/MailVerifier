@@ -16,13 +16,13 @@ const features = [
     us: "99.7%", 
     avg: "98.3%", 
     competitorValues: ["99%", "99%", "97%"], 
-    detail: "Highest verified accuracyt rate" 
+    detail: "Highest verified accuracy rate" 
   },
   { 
     label: "Speed", 
     us: "250k/hr", 
     avg: "173k/hr", 
-    competitorValues: ["180k/hr", "100k/h4", "240k/hr"], 
+    competitorValues: ["180k/hr", "100k/hr", "240k/hr"], 
     detail: "Higher delivery rates" 
   },
   { 
@@ -62,10 +62,10 @@ export function Comparison() {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 border-b border-white/10 pb-8 gap-6 text-center md:text-left">
           <div>
-            <p className="text-[#0070F3] font-mono text-[10px] mb-2 tracking-[0.3em] uppercase opacity-70">
+            <p className="text-[#0070F3] font-mono text-[10px] mb-2 tracking-[0.3em] uppercase font-bold">
               // MARKET_ANALYSIS_V4
             </p>
-            <h2 className="text-4xl font-black tracking-tighter uppercase">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">
               The <span className="text-slate-500">Benchmark</span>
             </h2>
           </div>
@@ -75,78 +75,87 @@ export function Comparison() {
           </div>
         </div>
 
-        {/* --- MOBILE VIEW: Uses the 'avg' field --- */}
+        {/* --- MOBILE VIEW --- */}
         <div className="md:hidden space-y-4">
           {features.map((feature, i) => (
-            <div key={i} className="bg-[#112240]/40 border border-white/10 rounded-2xl p-6 overflow-hidden relative">
+            <div key={i} className="bg-[#112240]/60 border border-white/10 rounded-2xl p-6 overflow-hidden relative">
               <div className="flex justify-between items-start mb-6">
-                <span className="text-slate-500 font-mono text-[10px] uppercase tracking-widest">{feature.label}</span>
-                <span className="text-[#0070F3] font-mono text-[9px] uppercase font-bold bg-blue-500/10 px-2 py-1 rounded">Best in Class</span>
+                <span className="text-slate-300 font-mono text-xs uppercase tracking-widest font-bold">{feature.label}</span>
+                <span className="text-[#0070F3] font-mono text-[9px] uppercase font-bold bg-blue-500/10 px-2 py-1 rounded">Performance</span>
               </div>
               
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <p className="text-slate-400 text-[10px] uppercase font-bold tracking-tighter">MailVerifier</p>
-                  <p className="text-2xl font-black text-white flex items-center gap-2">
+                  <p className="text-2xl font-black text-white flex items-center gap-2 tabular-nums">
                     <Zap size={16} className="text-[#0070F3] fill-[#0070F3]" />
                     {feature.us}
                   </p>
                 </div>
                 <div className="space-y-1 border-l border-white/5 pl-4">
-                  <p className="text-slate-500 text-[10px] uppercase font-bold tracking-tighter">Others (Avg)</p>
-                  {/* Pulls from the 'avg' property in the array above */}
-                  <p className="text-2xl font-black text-slate-600">{feature.avg}</p>
+                  <p className="text-slate-500 text-[10px] uppercase font-bold tracking-tighter">Industry Avg</p>
+                  <p className="text-2xl font-black text-slate-600 tabular-nums">{feature.avg}</p>
                 </div>
               </div>
 
               <div className="mt-4 pt-4 border-t border-white/5 flex items-center gap-2">
-                <Info size={12} className="text-[#0070F3]" />
-                <p className="text-slate-500 text-[11px] italic">{feature.detail}</p>
+                <Info size={14} className="text-[#0070F3]" />
+                <p className="text-slate-400 text-xs italic">{feature.detail}</p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* --- DESKTOP VIEW: Uses the 'competitorValues' array --- */}
-        <div className="hidden md:block relative border border-white/10 bg-[#112240]/20 rounded-sm overflow-hidden">
-          <div className="absolute top-0 bottom-0 left-[20%] w-[20%] bg-[#0070F3]/5 border-x border-[#0070F3]/30 pointer-events-none z-0" />
+        {/* --- DESKTOP VIEW --- */}
+        <div className="hidden md:block relative border border-white/10 bg-[#112240]/20 rounded-lg overflow-hidden">
+          {/* Vertical Highlight for "Us" Column */}
+          <div className="absolute top-0 bottom-0 left-[20%] w-[20%] bg-[#0070F3]/5 border-x border-[#0070F3]/20 pointer-events-none z-0" />
 
+          {/* Table Head */}
           <div className="relative flex border-b border-white/10 z-10">
             <div className="w-[20%] p-8" />
-            <div className="w-[20%] bg-[#0070F3] p-8 flex flex-col items-center justify-center gap-2 shadow-[0_10px_30px_rgba(0,112,243,0.3)]">
-              <span className="font-black uppercase tracking-widest text-xs italic text-white">MailVerifier</span>
+            <div className="w-[20%] bg-[#0070F3] p-8 flex flex-col items-center justify-center gap-2 shadow-[0_10px_40px_rgba(0,112,243,0.2)]">
+              <span className="font-black uppercase tracking-widest text-[11px] italic text-white">MailVerifier</span>
               <Zap className="fill-white w-4 h-4 text-white" />
             </div>
             {competitors.map((comp, idx) => (
-              <div key={idx} className="w-[20%] p-8 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all border-l border-white/5">
+              <div key={idx} className="w-[20%] p-8 flex items-center justify-center grayscale opacity-40 hover:opacity-80 transition-all border-l border-white/5">
                 <img 
                   src={comp.logo} 
                   alt={comp.alt} 
-                  className="h-10 w-auto object-contain"
+                  className="h-8 w-auto object-contain"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                     const parent = e.currentTarget.parentElement;
-                    if (parent) parent.innerHTML = `<span class="text-slate-500 font-bold text-[10px] uppercase">${comp.alt}</span>`;
+                    if (parent) parent.innerHTML = `<span class="text-slate-500 font-bold text-[10px] uppercase tracking-tighter">${comp.alt}</span>`;
                   }}
                 />
               </div>
             ))}
           </div>
 
+          {/* Table Body */}
           {features.map((feature, i) => (
-            <div key={i} className="relative flex border-b border-white/5 last:border-0 z-10 hover:bg-white/[0.02] transition-colors">
-              <div className="w-[20%] p-6 flex items-center justify-end pr-10 border-r border-white/5">
-                <span className="text-slate-500 font-mono text-[10px] uppercase tracking-widest text-right leading-tight">{feature.label}</span>
+            <div key={i} className="relative flex border-b border-white/5 last:border-0 z-10 hover:bg-white/[0.03] transition-colors group">
+              {/* Feature Label Column */}
+              <div className="w-[20%] p-7 flex items-center justify-end pr-10 border-r border-white/5">
+                <span className="text-slate-300 font-bold text-xs uppercase tracking-widest text-right leading-tight group-hover:text-white transition-colors">
+                  {feature.label}
+                </span>
               </div>
-              <div className="w-[20%] p-6 flex items-center justify-center">
+              
+              {/* Our Values Column (Highlighted) */}
+              <div className="w-[20%] p-7 flex items-center justify-center bg-[#0070F3]/5">
                 <div className="flex items-center gap-2">
-                  <Check className="text-[#0070F3] w-4 h-4" />
-                  <span className="font-black text-lg tabular-nums">{feature.us}</span>
+                  <Check className="text-[#0070F3] w-5 h-5" strokeWidth={3} />
+                  <span className="font-black text-xl tabular-nums text-white">{feature.us}</span>
                 </div>
               </div>
+
+              {/* Competitor Value Columns */}
               {competitors.map((_, compIdx) => (
-                <div key={compIdx} className="w-[20%] p-6 flex items-center justify-center opacity-30 border-l border-white/5">
-                  <span className="text-slate-400 font-medium tabular-nums text-sm">
+                <div key={compIdx} className="w-[20%] p-7 flex items-center justify-center opacity-30 border-l border-white/5">
+                  <span className="text-slate-400 font-bold tabular-nums text-sm">
                     {feature.competitorValues[compIdx]}
                   </span>
                 </div>
@@ -155,11 +164,11 @@ export function Comparison() {
           ))}
         </div>
 
-        {/* Footer */}
-        <div className="mt-12 flex items-center gap-4 opacity-30">
-           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-           <p className="font-mono text-[8px] uppercase tracking-[0.3em]">End of Competitive Audit</p>
-           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        {/* Status Footer */}
+        <div className="mt-12 flex items-center gap-6 opacity-20">
+           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white to-transparent" />
+           <p className="font-mono text-[9px] uppercase tracking-[0.4em] whitespace-nowrap">End_of_Comparison_Ledger</p>
+           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white to-transparent" />
         </div>
       </div>
     </section>
