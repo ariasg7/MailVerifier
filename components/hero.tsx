@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowRight, Mail, Shield, Activity, RefreshCw, Tag } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Mail, Shield, RefreshCw, Tag } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -63,10 +64,13 @@ export function Hero() {
           </p>
 
           <div className="w-full flex items-center justify-center lg:justify-start gap-6 mb-16">
-            <button className="w-full sm:w-auto bg-[#0A192F] text-white rounded-2xl px-10 py-5 flex items-center justify-center gap-3 hover:bg-[#0070F3] hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 group font-bold text-lg font-inter">
+            <Link 
+              href="/authentication"
+              className="w-full sm:w-auto bg-[#0A192F] text-white rounded-2xl px-10 py-5 flex items-center justify-center gap-3 hover:bg-[#0070F3] hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 group font-bold text-lg font-inter"
+            >
               Sign Up Now
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
           </div>
 
           {/* MOBILE-ONLY METRICS */}
@@ -97,7 +101,7 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Right Side: Big Card */}
+        {/* Right Side: Bento Card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -106,7 +110,7 @@ export function Hero() {
         >
           <div className="relative bg-white/40 backdrop-blur-3xl rounded-[48px] p-12 border border-white/60 shadow-[0_32px_64px_-16px_rgba(0,112,243,0.15)]">
             <div className="flex flex-col gap-12">
-              {/* Precision Section */}
+              
               <div className="flex justify-between items-end border-b border-slate-100 pb-8">
                 <div className="space-y-1">
                   <p className="text-[#0070F3] font-bold tracking-[0.2em] text-[10px] uppercase font-inter">Precision Engine</p>
@@ -117,16 +121,15 @@ export function Hero() {
                 <p className="text-slate-400 font-bold text-xs pb-2 font-inter tracking-widest uppercase">Accuracy</p>
               </div>
 
-              {/* Pricing & Rollover Section */}
               <div className="flex justify-between items-end border-b border-slate-100 pb-8">
                 <div className="space-y-2">
                   <p className="text-[#0070F3] font-bold tracking-[0.2em] text-[10px] uppercase font-inter">Global Pricing</p>
                   <div className="flex flex-col">
                     <h3 className="text-[#0A192F] text-5xl font-black tracking-tighter font-inter">
-                      $319 <span className="text-xl text-slate-400">per 1M</span>
+                      $319 <span className="text-xl text-slate-400 font-medium">per 1M</span>
                     </h3>
-                    <div className="flex items-center gap-2 mt-1">
-                       <RefreshCw size={12} className="text-emerald-500 animate-spin-slow" />
+                    <div className="flex items-center gap-2 mt-2">
+                       <RefreshCw size={14} className="text-emerald-500 animate-[spin_3s_linear_infinite]" />
                        <p className="text-[#0A192F] font-bold text-sm">3 Month Credit Rollover</p>
                     </div>
                   </div>
@@ -134,7 +137,6 @@ export function Hero() {
                 <p className="text-slate-400 font-bold text-xs pb-2 font-inter tracking-widest uppercase">Value</p>
               </div>
 
-              {/* Progress Section */}
               <div className="space-y-4 pt-4">
                 <div className="flex justify-between items-center">
                     <p className="text-[#0A192F] font-black text-xl font-inter tracking-tight">Real-time Verification</p>
@@ -150,18 +152,17 @@ export function Hero() {
             </div>
           </div>
           
-          {/* Flying Envelope */}
+          {/* Floating Element */}
           <motion.div 
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -bottom-4 -right-4 flex items-center justify-center z-20 group"
+            className="absolute -bottom-4 -right-4 flex items-center justify-center z-20"
           >
             <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50">
               <Mail className="w-10 h-10 text-[#0070F3]" strokeWidth={1.5} />
             </div>
           </motion.div>
         </motion.div>
-
       </div>
     </section>
   );
