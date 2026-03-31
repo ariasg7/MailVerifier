@@ -60,12 +60,12 @@ export function Comparison() {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 border-b border-white/10 pb-8 gap-6 text-center md:text-left">
-          <div>
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 border-b border-white/10 pb-8 gap-6">
+          <div className="text-center md:text-left">
             <p className="text-[#0070F3] font-mono text-[10px] mb-2 tracking-[0.3em] uppercase font-bold">
               // MARKET_ANALYSIS_V4
             </p>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-white">
               The <span className="text-slate-500">Benchmark</span>
             </h2>
           </div>
@@ -75,15 +75,80 @@ export function Comparison() {
           </div>
         </div>
 
+        {/* --- DESKTOP VIEW --- */}
+        <div className="hidden md:block border border-white/10 bg-[#112240]/20 rounded-lg overflow-hidden">
+          <div className="grid grid-cols-5">
+            
+            {/* Header Row */}
+            <div className="p-8 border-b border-white/10 bg-[#0A192F]/50" /> 
+            
+            {/* Our Brand Column Header */}
+            <div className="bg-[#0070F3] p-8 flex flex-col items-center justify-center gap-2 shadow-[0_10px_40px_rgba(0,112,243,0.3)] relative z-20">
+              <span className="font-black uppercase tracking-widest text-[11px] italic text-white text-center">MailVerifier</span>
+              <Zap className="fill-white w-4 h-4 text-white" />
+            </div>
+
+            {/* Competitor Brand Headers (Logos Restored) */}
+            {competitors.map((comp, idx) => (
+              <div key={idx} className="p-8 flex items-center justify-center grayscale opacity-40 hover:opacity-100 transition-all border-b border-white/10 border-l border-white/5 bg-[#0A192F]/30 group">
+                <img 
+                  src={comp.logo} 
+                  alt={comp.alt} 
+                  className="h-7 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                  onLoad={() => console.log(`Loaded: ${comp.logo}`)}
+                  onError={(e) => {
+                    console.error(`Failed to load image at: ${comp.logo}`); // CHECK YOUR CONSOLE FOR THIS
+                    e.currentTarget.style.display = 'none';
+                    const parent = e.currentTarget.parentElement;
+                    if (parent && !parent.querySelector('.fallback-text')) {
+                      const span = document.createElement('span');
+                      span.className = "fallback-text text-slate-500 font-bold text-[10px] uppercase tracking-tighter text-center";
+                      span.innerText = comp.alt;
+                      parent.appendChild(span);
+                    }
+                  }}
+                />
+              </div>
+            ))}
+
+            {/* Feature Rows */}
+            {features.map((feature, i) => (
+              <React.Fragment key={i}>
+                {/* 1. Label Column (Left) */}
+                <div className="p-7 flex items-center justify-center border-b border-white/5 border-r border-white/5 bg-white/[0.02]">
+                  <span className="text-slate-300 font-bold text-[11px] uppercase tracking-widest text-center leading-tight">
+                    {feature.label}
+                  </span>
+                </div>
+                
+                {/* 2. MailVerifier Column (Perfectly Centered) */}
+                <div className="p-7 flex items-center justify-center bg-[#0070F3]/10 border-b border-white/10 border-x border-[#0070F3]/20">
+                  <div className="flex items-center gap-2">
+                    <Check className="text-[#0070F3] w-5 h-5" strokeWidth={3} />
+                    <span className="font-black text-xl tabular-nums text-white text-center">{feature.us}</span>
+                  </div>
+                </div>
+
+                {/* 3-5. Competitor Columns */}
+                {competitors.map((_, compIdx) => (
+                  <div key={compIdx} className="p-7 flex items-center justify-center opacity-30 border-b border-white/5 border-l border-white/5">
+                    <span className="text-slate-400 font-bold tabular-nums text-sm text-center">
+                      {feature.competitorValues[compIdx]}
+                    </span>
+                  </div>
+                ))}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+
         {/* --- MOBILE VIEW --- */}
         <div className="md:hidden space-y-4">
           {features.map((feature, i) => (
             <div key={i} className="bg-[#112240]/60 border border-white/10 rounded-2xl p-6 overflow-hidden relative">
               <div className="flex justify-between items-start mb-6">
                 <span className="text-slate-300 font-mono text-xs uppercase tracking-widest font-bold">{feature.label}</span>
-                <span className="text-[#0070F3] font-mono text-[9px] uppercase font-bold bg-blue-500/10 px-2 py-1 rounded">Performance</span>
               </div>
-              
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <p className="text-slate-400 text-[10px] uppercase font-bold tracking-tighter">MailVerifier</p>
@@ -93,78 +158,15 @@ export function Comparison() {
                   </p>
                 </div>
                 <div className="space-y-1 border-l border-white/5 pl-4">
-                  <p className="text-slate-500 text-[10px] uppercase font-bold tracking-tighter">Industry Avg</p>
+                  <p className="text-slate-500 text-[10px] uppercase font-bold tracking-tighter">Others (Avg)</p>
                   <p className="text-2xl font-black text-slate-600 tabular-nums">{feature.avg}</p>
                 </div>
               </div>
-
-              <div className="mt-4 pt-4 border-t border-white/5 flex items-center gap-2">
-                <Info size={14} className="text-[#0070F3]" />
-                <p className="text-slate-400 text-xs italic">{feature.detail}</p>
-              </div>
             </div>
           ))}
         </div>
 
-        {/* --- DESKTOP VIEW --- */}
-        <div className="hidden md:block relative border border-white/10 bg-[#112240]/20 rounded-lg overflow-hidden">
-          {/* Vertical Highlight for "Us" Column */}
-          <div className="absolute top-0 bottom-0 left-[20%] w-[20%] bg-[#0070F3]/5 border-x border-[#0070F3]/20 pointer-events-none z-0" />
-
-          {/* Table Head */}
-          <div className="relative flex border-b border-white/10 z-10">
-            <div className="w-[20%] p-8" />
-            <div className="w-[20%] bg-[#0070F3] p-8 flex flex-col items-center justify-center gap-2 shadow-[0_10px_40px_rgba(0,112,243,0.2)]">
-              <span className="font-black uppercase tracking-widest text-[11px] italic text-white">MailVerifier</span>
-              <Zap className="fill-white w-4 h-4 text-white" />
-            </div>
-            {competitors.map((comp, idx) => (
-              <div key={idx} className="w-[20%] p-8 flex items-center justify-center grayscale opacity-40 hover:opacity-80 transition-all border-l border-white/5">
-                <img 
-                  src={comp.logo} 
-                  alt={comp.alt} 
-                  className="h-8 w-auto object-contain"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    const parent = e.currentTarget.parentElement;
-                    if (parent) parent.innerHTML = `<span class="text-slate-500 font-bold text-[10px] uppercase tracking-tighter">${comp.alt}</span>`;
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Table Body */}
-          {features.map((feature, i) => (
-            <div key={i} className="relative flex border-b border-white/5 last:border-0 z-10 hover:bg-white/[0.03] transition-colors group">
-              {/* Feature Label Column */}
-              <div className="w-[20%] p-7 flex items-center justify-end pr-10 border-r border-white/5">
-                <span className="text-slate-300 font-bold text-xs uppercase tracking-widest text-right leading-tight group-hover:text-white transition-colors">
-                  {feature.label}
-                </span>
-              </div>
-              
-              {/* Our Values Column (Highlighted) */}
-              <div className="w-[20%] p-7 flex items-center justify-center bg-[#0070F3]/5">
-                <div className="flex items-center gap-2">
-                  <Check className="text-[#0070F3] w-5 h-5" strokeWidth={3} />
-                  <span className="font-black text-xl tabular-nums text-white">{feature.us}</span>
-                </div>
-              </div>
-
-              {/* Competitor Value Columns */}
-              {competitors.map((_, compIdx) => (
-                <div key={compIdx} className="w-[20%] p-7 flex items-center justify-center opacity-30 border-l border-white/5">
-                  <span className="text-slate-400 font-bold tabular-nums text-sm">
-                    {feature.competitorValues[compIdx]}
-                  </span>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        {/* Status Footer */}
+        {/* Footer */}
         <div className="mt-12 flex items-center gap-6 opacity-20">
            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white to-transparent" />
            <p className="font-mono text-[9px] uppercase tracking-[0.4em] whitespace-nowrap">End_of_Comparison_Ledger</p>
