@@ -52,12 +52,12 @@ export function Hero() {
         >
           {/* Headline with fixed line logic */}
           <h1 className="text-[#0A192F] mb-8 font-inter tracking-tighter leading-[1.1] font-[900] text-[42px] sm:text-[64px] lg:text-[84px]">
-            <span className="whitespace-nowrap">Accuracy You</span> <br/>
-            <span className="text-[#0070F3] whitespace-nowrap">Can Bank On.</span>
+            <span className="whitespace-nowrap">Built for Teams</span> <br/>
+            <span className="text-[#0070F3] whitespace-nowrap">That Send Millions.</span>
           </h1>
 
           <p className="text-slate-500 mb-10 max-w-lg font-inter text-lg md:text-xl leading-relaxed">
-            Built for cold email teams verifying 100k–5M+ contacts monthly. Stop the bounces, save your sender reputation.
+            The fastest bulk email verification tool of 2026, built for agencies and sales teams. 99.7% accurate and a fraction of the cost.
           </p>
 
           <div className="w-full flex items-center justify-center lg:justify-start gap-6 mb-16">

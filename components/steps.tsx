@@ -32,7 +32,7 @@ export function Steps() {
   ];
 
   return (
-    <section id="steps" className="py-32 px-6 bg-white relative overflow-hidden font-inter">
+    <section id="how-it-works" className="py-32 px-6 bg-white relative overflow-hidden font-inter">
       {/* Background Technical Watermark */}
       <div className="absolute top-10 left-10 opacity-[0.02] font-mono text-[150px] font-black select-none pointer-events-none">
         PROCESS_v4
