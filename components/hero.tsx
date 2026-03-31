@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Mail, Shield, Activity } from "lucide-react";
+import { ArrowRight, Mail, Shield, Activity, RefreshCw, Tag } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -50,12 +50,12 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="w-full flex flex-col items-center lg:items-start text-center lg:text-left"
         >
-          {/* Headline with fixed line logic */}
-          <h1 className="text-[#0A192F] mb-8 font-inter tracking-tighter leading-[1.1] font-[900] text-[42px] sm:text-[64px] lg:text-[84px]">
-            <span className="whitespace-nowrap">Built for Teams</span> <br/>
-            <span className="text-[#0070F3] inline-block whitespace-nowrap">
-  That Send <span className="tracking-normal"><br></br>Millions.</span>
-</span>
+          {/* Headline with fixed line logic and padding to prevent clipping */}
+          <h1 className="text-[#0A192F] mb-8 font-inter tracking-tighter leading-[1.1] font-[900] text-[42px] sm:text-[64px] lg:text-[84px] pr-4">
+            <span className="inline-block whitespace-nowrap">Built for Teams</span> <br/>
+            <span className="text-[#0070F3] inline-block">
+              That Send <span className="tracking-normal">Millions.</span>
+            </span>
           </h1>
 
           <p className="text-slate-500 mb-10 max-w-lg font-inter text-lg md:text-xl leading-relaxed">
@@ -69,10 +69,8 @@ export function Hero() {
             </button>
           </div>
 
-          {/* MOBILE-ONLY METRICS: Perfected Alignment */}
+          {/* MOBILE-ONLY METRICS */}
           <div className="lg:hidden w-full grid grid-cols-2 gap-4 border-t border-slate-100 pt-10">
-            
-            {/* Precision Column */}
             <div className="flex flex-col items-center justify-center">
               <div className="flex flex-col items-center">
                 <div className="flex items-center gap-1.5 mb-1">
@@ -85,23 +83,21 @@ export function Hero() {
               </div>
             </div>
             
-            {/* Network Column */}
             <div className="flex flex-col items-center justify-center border-l border-slate-50">
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center text-center px-2">
                 <div className="flex items-center gap-1.5 mb-1">
-                  <Activity size={12} className="text-[#0070F3]" />
-                  <p className="text-[#0070F3] font-bold text-[10px] uppercase tracking-widest">Network</p>
+                  <Tag size={12} className="text-[#0070F3]" />
+                  <p className="text-[#0070F3] font-bold text-[10px] uppercase tracking-widest">Best Value</p>
                 </div>
-                <p className="text-[#0A192F] text-4xl font-black tabular-nums leading-none">
-                  <AnimatedCounter target={100} suffix="%" />
+                <p className="text-[#0A192F] text-2xl font-black tabular-nums leading-none">
+                  $319 <span className="text-[10px] text-slate-400">/ 1M</span>
                 </p>
               </div>
             </div>
-
           </div>
         </motion.div>
 
-        {/* Right Side: Big Card (STAYS EXACTLY THE SAME ON DESKTOP) */}
+        {/* Right Side: Big Card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -110,6 +106,7 @@ export function Hero() {
         >
           <div className="relative bg-white/40 backdrop-blur-3xl rounded-[48px] p-12 border border-white/60 shadow-[0_32px_64px_-16px_rgba(0,112,243,0.15)]">
             <div className="flex flex-col gap-12">
+              {/* Precision Section */}
               <div className="flex justify-between items-end border-b border-slate-100 pb-8">
                 <div className="space-y-1">
                   <p className="text-[#0070F3] font-bold tracking-[0.2em] text-[10px] uppercase font-inter">Precision Engine</p>
@@ -120,16 +117,24 @@ export function Hero() {
                 <p className="text-slate-400 font-bold text-xs pb-2 font-inter tracking-widest uppercase">Accuracy</p>
               </div>
 
+              {/* Pricing & Rollover Section */}
               <div className="flex justify-between items-end border-b border-slate-100 pb-8">
-                <div className="space-y-1">
-                  <p className="text-[#0070F3] font-bold tracking-[0.2em] text-[10px] uppercase font-inter">Network Status</p>
-                  <h3 className="text-[#0A192F] text-6xl font-black tracking-tighter font-inter">
-                    <AnimatedCounter target={100} suffix="%" />
-                  </h3>
+                <div className="space-y-2">
+                  <p className="text-[#0070F3] font-bold tracking-[0.2em] text-[10px] uppercase font-inter">Global Pricing</p>
+                  <div className="flex flex-col">
+                    <h3 className="text-[#0A192F] text-5xl font-black tracking-tighter font-inter">
+                      $319 <span className="text-xl text-slate-400">per 1M</span>
+                    </h3>
+                    <div className="flex items-center gap-2 mt-1">
+                       <RefreshCw size={12} className="text-emerald-500 animate-spin-slow" />
+                       <p className="text-[#0A192F] font-bold text-sm">3 Month Credit Rollover</p>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-slate-400 font-bold text-xs pb-2 font-inter tracking-widest uppercase">Uptime</p>
+                <p className="text-slate-400 font-bold text-xs pb-2 font-inter tracking-widest uppercase">Value</p>
               </div>
 
+              {/* Progress Section */}
               <div className="space-y-4 pt-4">
                 <div className="flex justify-between items-center">
                     <p className="text-[#0A192F] font-black text-xl font-inter tracking-tight">Real-time Verification</p>
