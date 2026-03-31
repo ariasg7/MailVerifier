@@ -51,7 +51,6 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="w-full flex flex-col items-center lg:items-start text-center lg:text-left"
         >
-          {/* Headline with fixed line logic and padding to prevent clipping */}
           <h1 className="text-[#0A192F] mb-8 font-inter tracking-tighter leading-[1.1] font-[900] text-[42px] sm:text-[64px] lg:text-[84px] pr-4">
             <span className="inline-block whitespace-nowrap">Built for Teams</span> <br/>
             <span className="text-[#0070F3] inline-block">
@@ -82,7 +81,8 @@ export function Hero() {
                   <p className="text-[#0070F3] font-bold text-[10px] uppercase tracking-widest">Precision</p>
                 </div>
                 <p className="text-[#0A192F] text-4xl font-black tabular-nums leading-none">
-                  <AnimatedCounter target={99.9} suffix="%" />
+                  {/* Updated Value for Mobile */}
+                  <AnimatedCounter target={99.7} suffix="%" />
                 </p>
               </div>
             </div>
@@ -115,7 +115,8 @@ export function Hero() {
                 <div className="space-y-1">
                   <p className="text-[#0070F3] font-bold tracking-[0.2em] text-[10px] uppercase font-inter">Precision Engine</p>
                   <h3 className="text-[#0A192F] text-6xl font-black tracking-tighter font-inter">
-                    <AnimatedCounter target={99.9} suffix="%" />
+                    {/* Updated Value for Desktop Bento Card */}
+                    <AnimatedCounter target={99.7} suffix="%" />
                   </h3>
                 </div>
                 <p className="text-slate-400 font-bold text-xs pb-2 font-inter tracking-widest uppercase">Accuracy</p>
@@ -152,7 +153,6 @@ export function Hero() {
             </div>
           </div>
           
-          {/* Floating Element */}
           <motion.div 
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
