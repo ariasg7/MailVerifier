@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Zap, Check, Info } from "lucide-react";
+import { Zap, Check } from "lucide-react";
 
 const features = [
   { 
@@ -76,53 +76,40 @@ export function Comparison() {
         </div>
 
         {/* --- DESKTOP VIEW --- */}
-        <div className="hidden md:block border border-white/10 bg-[#112240]/20 rounded-lg overflow-hidden">
+        {/* Added solid background and stronger border for readability */}
+        <div className="hidden md:block border border-white/10 bg-[#0B1221] rounded-2xl overflow-hidden shadow-2xl">
           <div className="grid grid-cols-5">
             
             {/* Header Row */}
-            <div className="p-8 border-b border-white/10 bg-[#0A192F]/50" /> 
+            <div className="p-8 border-b border-white/10 bg-[#0F172A]" /> 
             
             {/* Our Brand Column Header */}
-            <div className="bg-[#0070F3] p-8 flex flex-col items-center justify-center gap-2 shadow-[0_10px_40px_rgba(0,112,243,0.3)] relative z-20">
+            <div className="bg-[#0070F3] p-8 flex flex-col items-center justify-center gap-2 shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] relative z-20">
               <span className="font-black uppercase tracking-widest text-[11px] italic text-white text-center">MailVerifier</span>
               <Zap className="fill-white w-4 h-4 text-white" />
             </div>
 
-            {/* Competitor Brand Headers (Logos Restored) */}
+            {/* Competitor Brand Headers */}
             {competitors.map((comp, idx) => (
-              <div key={idx} className="p-8 flex items-center justify-center grayscale opacity-40 hover:opacity-100 transition-all border-b border-white/10 border-l border-white/5 bg-[#0A192F]/30 group">
-                <img 
-                  src={comp.logo} 
-                  alt={comp.alt} 
-                  className="h-7 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
-                  onLoad={() => console.log(`Loaded: ${comp.logo}`)}
-                  onError={(e) => {
-                    console.error(`Failed to load image at: ${comp.logo}`); // CHECK YOUR CONSOLE FOR THIS
-                    e.currentTarget.style.display = 'none';
-                    const parent = e.currentTarget.parentElement;
-                    if (parent && !parent.querySelector('.fallback-text')) {
-                      const span = document.createElement('span');
-                      span.className = "fallback-text text-slate-500 font-bold text-[10px] uppercase tracking-tighter text-center";
-                      span.innerText = comp.alt;
-                      parent.appendChild(span);
-                    }
-                  }}
-                />
+              <div key={idx} className="p-8 flex items-center justify-center grayscale opacity-40 hover:opacity-100 transition-all border-b border-white/10 border-l border-white/10 bg-[#0F172A]/50 group">
+                <span className="text-slate-500 font-bold text-[10px] uppercase tracking-tighter text-center group-hover:text-slate-300">
+                   {comp.alt}
+                </span>
               </div>
             ))}
 
             {/* Feature Rows */}
             {features.map((feature, i) => (
               <React.Fragment key={i}>
-                {/* 1. Label Column (Left) */}
-                <div className="p-7 flex items-center justify-center border-b border-white/5 border-r border-white/5 bg-white/[0.02]">
+                {/* 1. Label Column (Left) - Subtle alternating background */}
+                <div className={`p-7 flex items-center justify-center border-b border-white/10 border-r border-white/10 ${i % 2 === 0 ? 'bg-white/[0.03]' : 'bg-transparent'}`}>
                   <span className="text-slate-300 font-bold text-[11px] uppercase tracking-widest text-center leading-tight">
                     {feature.label}
                   </span>
                 </div>
                 
-                {/* 2. MailVerifier Column (Perfectly Centered) */}
-                <div className="p-7 flex items-center justify-center bg-[#0070F3]/10 border-b border-white/10 border-x border-[#0070F3]/20">
+                {/* 2. MailVerifier Column */}
+                <div className={`p-7 flex items-center justify-center bg-[#0070F3]/5 border-b border-white/10 border-x border-[#0070F3]/20`}>
                   <div className="flex items-center gap-2">
                     <Check className="text-[#0070F3] w-5 h-5" strokeWidth={3} />
                     <span className="font-black text-xl tabular-nums text-white text-center">{feature.us}</span>
@@ -131,7 +118,7 @@ export function Comparison() {
 
                 {/* 3-5. Competitor Columns */}
                 {competitors.map((_, compIdx) => (
-                  <div key={compIdx} className="p-7 flex items-center justify-center opacity-30 border-b border-white/5 border-l border-white/5">
+                  <div key={compIdx} className={`p-7 flex items-center justify-center opacity-40 border-b border-white/10 border-l border-white/10 ${i % 2 === 0 ? 'bg-white/[0.01]' : 'bg-transparent'}`}>
                     <span className="text-slate-400 font-bold tabular-nums text-sm text-center">
                       {feature.competitorValues[compIdx]}
                     </span>

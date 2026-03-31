@@ -27,6 +27,8 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
   return <span>{count === target ? target : count.toFixed(count < 100 ? 1 : 0)}{suffix}</span>;
 }
 
+// ... (AnimatedCounter component remains the same)
+
 export function Hero() {
   const [progress, setProgress] = useState(0);
 
@@ -51,7 +53,8 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="w-full flex flex-col items-center lg:items-start text-center lg:text-left"
         >
-          <h1 className="text-[#0A192F] mb-8 font-inter tracking-tighter leading-[1.1] font-[900] text-[42px] sm:text-[64px] lg:text-[84px] pr-4">
+          {/* UPDATED HEADING SIZES FOR MOBILE */}
+          <h1 className="text-[#0A192F] mb-8 font-inter tracking-tighter leading-[1.05] md:leading-[1.1] font-[900] text-[52px] sm:text-[64px] lg:text-[84px] pr-4">
             <span className="inline-block whitespace-nowrap">Built for Teams</span> <br/>
             <span className="text-[#0070F3] inline-block">
               That Send <span className="tracking-normal">Millions.</span>
@@ -81,7 +84,6 @@ export function Hero() {
                   <p className="text-[#0070F3] font-bold text-[10px] uppercase tracking-widest">Precision</p>
                 </div>
                 <p className="text-[#0A192F] text-4xl font-black tabular-nums leading-none">
-                  {/* Updated Value for Mobile */}
                   <AnimatedCounter target={99.7} suffix="%" />
                 </p>
               </div>
@@ -101,7 +103,7 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Right Side: Bento Card */}
+        {/* ... (Rest of the component: Bento Card and Right Side remain the same) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -110,12 +112,10 @@ export function Hero() {
         >
           <div className="relative bg-white/40 backdrop-blur-3xl rounded-[48px] p-12 border border-white/60 shadow-[0_32px_64px_-16px_rgba(0,112,243,0.15)]">
             <div className="flex flex-col gap-12">
-              
               <div className="flex justify-between items-end border-b border-slate-100 pb-8">
                 <div className="space-y-1">
                   <p className="text-[#0070F3] font-bold tracking-[0.2em] text-[10px] uppercase font-inter">Precision Engine</p>
                   <h3 className="text-[#0A192F] text-6xl font-black tracking-tighter font-inter">
-                    {/* Updated Value for Desktop Bento Card */}
                     <AnimatedCounter target={99.7} suffix="%" />
                   </h3>
                 </div>
