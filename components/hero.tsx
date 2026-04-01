@@ -5,7 +5,7 @@ import { ArrowRight, Mail, Shield, RefreshCw, Tag } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
+function AnimatedCounter({ target, suffix = "", prefix = "" }: { target: number; suffix?: string; prefix?: string }) {
   const [count, setCount] = useState(0);
   useEffect(() => {
     const duration = 2000;
@@ -24,10 +24,14 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
     return () => clearInterval(timer);
   }, [target]);
 
-  return <span>{count === target ? target : count.toFixed(count < 100 ? 1 : 0)}{suffix}</span>;
+  return (
+    <span>
+      {prefix}
+      {count === target ? target : count.toFixed(count < 100 && target % 1 !== 0 ? 1 : 0)}
+      {suffix}
+    </span>
+  );
 }
-
-// ... (AnimatedCounter component remains the same)
 
 export function Hero() {
   const [progress, setProgress] = useState(0);
@@ -53,7 +57,6 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="w-full flex flex-col items-center lg:items-start text-center lg:text-left"
         >
-          {/* UPDATED HEADING SIZES FOR MOBILE */}
           <h1 className="text-[#0A192F] mb-8 font-inter tracking-tighter leading-[1.05] md:leading-[1.1] font-[900] text-[52px] sm:text-[64px] lg:text-[84px] pr-4">
             <span className="inline-block whitespace-nowrap">Built for Teams</span> <br/>
             <span className="text-[#0070F3] inline-block">
@@ -75,7 +78,7 @@ export function Hero() {
             </Link>
           </div>
 
-          {/* MOBILE-ONLY METRICS */}
+          {/* MOBILE METRICS WITH COUNTERS */}
           <div className="lg:hidden w-full grid grid-cols-2 gap-4 border-t border-slate-100 pt-10">
             <div className="flex flex-col items-center justify-center">
               <div className="flex flex-col items-center">
@@ -96,14 +99,14 @@ export function Hero() {
                   <p className="text-[#0070F3] font-bold text-[10px] uppercase tracking-widest">Best Value</p>
                 </div>
                 <p className="text-[#0A192F] text-2xl font-black tabular-nums leading-none">
-                  $319 <span className="text-[10px] text-slate-400">/ 1M</span>
+                  <AnimatedCounter target={319} prefix="$" /> <span className="text-[10px] text-slate-400">/ 1M</span>
                 </p>
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* ... (Rest of the component: Bento Card and Right Side remain the same) */}
+        {/* Right Side: Desktop Bento Card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -127,7 +130,7 @@ export function Hero() {
                   <p className="text-[#0070F3] font-bold tracking-[0.2em] text-[10px] uppercase font-inter">Global Pricing</p>
                   <div className="flex flex-col">
                     <h3 className="text-[#0A192F] text-5xl font-black tracking-tighter font-inter">
-                      $319 <span className="text-xl text-slate-400 font-medium">per 1M</span>
+                      <AnimatedCounter target={319} prefix="$" /> <span className="text-xl text-slate-400 font-medium">per 1M</span>
                     </h3>
                     <div className="flex items-center gap-2 mt-2">
                        <RefreshCw size={14} className="text-emerald-500 animate-[spin_3s_linear_infinite]" />

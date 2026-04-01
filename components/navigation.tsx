@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Shield, Terminal, Menu, X, ArrowRight } from "lucide-react";
+import { Terminal, Menu, X, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -20,19 +20,13 @@ export function Navigation() {
     <nav className="fixed top-0 left-0 right-0 bg-[#0A192F] md:bg-[#0A192F]/90 backdrop-blur-xl border-b border-white/10 z-[999] font-inter">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-[1001]">
         
-        {/* Logo Section */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="bg-[#0070F3] p-1.5 rounded-sm">
-            <Shield className="w-5 h-5 text-white group-hover:rotate-12 transition-transform" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-white font-black text-lg tracking-tighter uppercase leading-none">
-              MailVerifier<span className="text-[#0070F3]">.net</span>
-            </span>
-            <span className="text-[8px] font-mono text-slate-500 uppercase tracking-[0.2em] mt-1">
-              #1 Email Validation Tool Available
-            </span>
-          </div>
+        {/* LOGO SECTION - Increased size for Brand Authority */}
+        <Link href="/" className="flex items-center group py-2">
+           <img 
+             src="/img/logo/MailVerifier_Horizontal.png" 
+             alt="MailVerifier Logo" 
+             className="h-10 md:h-14 w-auto object-contain brightness-110 group-hover:scale-[1.03] transition-transform duration-300"
+           />
         </Link>
 
         {/* Desktop Navigation */}
@@ -51,7 +45,6 @@ export function Navigation() {
 
         {/* Action Section */}
         <div className="hidden md:flex items-center gap-8">
-          {/* Discrete Login Link */}
           <Link 
             href="/authentication" 
             className="text-slate-400 hover:text-white font-mono text-[11px] uppercase tracking-[0.2em] transition-colors"
@@ -59,7 +52,6 @@ export function Navigation() {
             Login
           </Link>
 
-          {/* Enticing Sign Up Button */}
           <Link
             href="/authentication"
             className="bg-[#0070F3] text-white px-6 py-2.5 hover:bg-white hover:text-[#0A192F] hover:shadow-[0_0_20px_rgba(0,112,243,0.4)] transition-all text-xs font-black uppercase tracking-widest rounded-sm flex items-center gap-2 group"
@@ -70,6 +62,7 @@ export function Navigation() {
           </Link>
         </div>
 
+        {/* Mobile Toggle */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden p-2 text-white hover:bg-white/5 rounded-lg transition-colors"
