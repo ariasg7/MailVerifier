@@ -9,33 +9,37 @@ export function Steps() {
       number: "01",
       icon: Upload,
       title: "Upload List",
-      description: "Securely import via CSV, TXT, or direct API integration.",
+      description: "Securely import via CSV, Excel (XLSX), or direct API integration",
+      status: "Bulk Upload" // New attribute
     },
     {
       number: "02",
       icon: Sparkles,
       title: "Deep Clean",
-      description: "AI-driven syntax validation and real-time server handshakes.",
+      description: "AI-driven syntax validation and SMTP checks.",
+      status: "High Accuracy" // New attribute
     },
     {
       number: "03",
       icon: BarChart3,
       title: "Analyze",
-      description: "Instant categorization of Safe, Catch-all, and Risky leads.",
+      description: "Instant categorization of Valid, Invalid, and Catch-all emails.",
+      status: "Fast Results" // New attribute
     },
     {
       number: "04",
       icon: Download,
       title: "Export & Send",
-      description: "One-click download or sync directly to your CRM/ESP.",
+      description: "One-click categorized download.",
+      status: "One-Click Download" // New attribute
     },
   ];
 
   return (
     <section id="how-it-works" className="py-32 px-6 bg-white relative overflow-hidden font-inter">
       {/* Background Technical Watermark */}
-      <div className="absolute top-10 left-10 opacity-[0.02] font-mono text-[150px] font-black select-none pointer-events-none">
-        PROCESS_v4
+      <div className="absolute top-10 left-10 opacity-[0.02] font-mono text-[150px] font-black select-none pointer-events-none text-[#0A192F]">
+        DELIVERABILITY
       </div>
 
       <div className="max-w-7xl mx-auto relative">
@@ -50,12 +54,15 @@ export function Steps() {
             >
               // OPERATIONAL_FLOW
             </motion.p>
-            <h2 className="text-5xl font-black text-[#0A192F] tracking-tighter uppercase">
-              Sequential <span className="text-slate-400">Audit.</span>
+            
+            <h2 className="text-5xl font-black text-[#0A192F] tracking-tighter uppercase leading-[1.05]">
+              Sequential <span className="text-slate-400">Audit</span> <br />
+              <span className="text-slate-400">to</span> 'HOW IT WORKS'
             </h2>
           </div>
+          
           <p className="text-slate-500 text-lg max-w-xs leading-tight">
-            Our multi-layer verification engine executes in four distinct phases.
+            High-quality rotating proxies<br /> state-of-the-art accuracy.
           </p>
         </div>
 
@@ -70,7 +77,6 @@ export function Steps() {
               viewport={{ once: true, margin: "-100px" }}
               className="h-full bg-[#0070F3] relative"
             >
-              {/* Glowing lead tip */}
               <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#0070F3] rounded-full shadow-[0_0_15px_#0070F3]" />
             </motion.div>
           </div>
@@ -90,7 +96,6 @@ export function Steps() {
                   {/* Step Number Card */}
                   <div className="mb-8 relative inline-block">
                     <motion.div 
-                      // This creates the "Highlight" effect as it comes into view
                       initial={{ scale: 1, borderColor: "#f1f5f9" }}
                       whileInView={{ 
                         scale: [1, 1.05, 1],
@@ -104,8 +109,6 @@ export function Steps() {
                       <span className="text-2xl font-black text-[#0A192F] group-hover:text-[#0070F3] transition-colors">
                         {step.number}
                       </span>
-                      
-                      {/* Technical Corner Notches */}
                       <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-slate-300" />
                       <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-slate-300" />
                     </motion.div>
@@ -126,7 +129,7 @@ export function Steps() {
                       {step.description}
                     </p>
                     
-                    {/* Status Indicator */}
+                    {/* Updated Status Indicator */}
                     <motion.div 
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
@@ -134,11 +137,12 @@ export function Steps() {
                       className="flex items-center gap-2 pt-2"
                     >
                       <div className="w-1 h-1 bg-emerald-500 rounded-full animate-pulse" />
-                      <span className="text-[9px] font-mono text-slate-400 uppercase tracking-tighter">Ready_to_execute</span>
+                      <span className="text-[9px] font-mono text-slate-400 uppercase tracking-tighter">
+                        {step.status}
+                      </span>
                     </motion.div>
                   </div>
 
-                  {/* Desktop Divider (Chevron) */}
                   {index !== steps.length - 1 && (
                     <div className="hidden md:block absolute top-8 -right-4 text-slate-100">
                       <ChevronRight size={16} />

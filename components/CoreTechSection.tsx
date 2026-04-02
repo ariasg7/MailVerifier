@@ -1,35 +1,35 @@
 "use client";
 
-import { Calendar, Workflow, Search, Zap, CheckCircle } from "lucide-react";
+import { Calendar, Mail, Shield, Zap, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function CoreTechSection() {
   const features = [
     {
-      icon: Search,
+      icon: Shield,
       title: "High-accuracy verification.",
-      body: "Identify unreachable addresses in milliseconds with our multi-layer SMTP handshake check. We don't just guess; we verify.",
+      body: "Verify up to 250,000 emails per hour with multi-layer SMTP checks. We don't guess - we verify.",
       size: "md:col-span-2", // This makes the tech-heavy card larger
       accent: "from-blue-500/20 to-cyan-500/5"
     },
     {
       icon: Calendar,
       title: "Credit Rollover.",
-      body: "Unused credits carry forward. No waste, just fair value.",
+      body: "Credits never expire - they roll over monthly for up to three months. No waste, just fair value.",
       size: "md:col-span-1",
       accent: "from-purple-500/20 to-blue-500/5"
     },
     {
-      icon: Workflow,
+      icon: Mail,
       title: "Built for Cold Outreach.",
-      body: "Designed for high-volume agencies running outbound daily.",
+      body: "Built for high-volume agencies and marketing teams running outbound at scale.",
       size: "md:col-span-1",
       accent: "from-emerald-500/20 to-teal-500/5"
     },
     {
       icon: Zap,
       title: "Lightspeed API.",
-      body: "Integrate directly into your stack with 200ms response times.",
+      body: " Integrate directly into your stack with throughput up to 250,000 emails per hour.",
       size: "md:col-span-2",
       accent: "from-[#0070F3]/20 to-transparent"
     }
@@ -46,15 +46,15 @@ export function CoreTechSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
             <motion.p className="text-[#0070F3] mb-4 uppercase tracking-[0.3em] font-bold text-xs">
-              System Architecture
+              Features
             </motion.p>
             <h2 className="text-white text-5xl font-black tracking-tighter">
               Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Deliverability.</span>
             </h2>
           </div>
           <div className="text-slate-400 font-mono text-sm border-l border-white/10 pl-6 hidden md:block">
-            // STATUS: OPTIMIZED <br />
-            // LATENCY: 14MS
+            // SPEED: OPTIMIZED  <br />
+            // ACCURACY: 99%+
           </div>
         </div>
 

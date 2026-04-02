@@ -7,21 +7,21 @@ export function Benefits() {
   const benefits = [
     {
       title: "Improve Engagement.",
-      body: "Reach real inboxes and keep reply rates climbing by removing dead data.",
+      body: "Reach real inboxes - not spam folders. Clean lists mean higher open rates and happier sales teams.",
       icon: Target,
       color: "text-emerald-400",
       bg: "from-emerald-500/10 to-transparent",
     },
     {
       title: "Boost Deliverability.",
-      body: "Protect your domain health. Lower bounces mean providers trust your IPs more.",
+      body: "Premium proxies and high-accuracy verification reduce bounces and protect your sender reputation.",
       icon: ShieldCheck,
       color: "text-[#0070F3]",
       bg: "from-blue-500/10 to-transparent",
     },
     {
       title: "Increase ROI.",
-      body: "Stop paying your ESP for invalid leads. Spend less on waste and more on real conversations.",
+      body: "Get more out of every list at the best price on the market. Better data, better results.",
       icon: TrendingUp,
       color: "text-purple-400",
       bg: "from-purple-500/10 to-transparent",

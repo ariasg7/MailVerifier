@@ -6,6 +6,7 @@ import { Benefits } from "../../components/benefits";
 import { Testimonial } from "../../components/testimonial";
 import { Pricing } from "../../components/pricing";
 import { Comparison } from "../../components/comparison";
+import { Guarantee } from "../../components/guarantee";
 import { FinalCTA } from "../../components/FinalCTA";
 import { Footer } from "../../components/footer";
 
@@ -22,6 +23,7 @@ export default function HomePage() {
       <Testimonial/>
       <Pricing/>
       <Comparison/>
+      <Guarantee/>
       <FinalCTA/>
       <Footer/>
     </div>

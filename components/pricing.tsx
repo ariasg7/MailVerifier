@@ -63,9 +63,9 @@ export function Pricing() {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-[#0A192F] tracking-tighter font-inter">
-            Pricing Command Center
+            Pricing
           </h2>
-          <p className="text-slate-500 mt-4 font-inter">Scale your verification as you grow.</p>
+          <p className="text-slate-500 mt-4 font-inter">Best pricing on the market</p>
         </div>
 
         <div className="bg-white border border-slate-200 rounded-[40px] p-8 md:p-12 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.08)] relative overflow-hidden">
@@ -164,8 +164,8 @@ export function Pricing() {
             <div className="flex flex-wrap justify-center gap-4">
               {[
                 { label: "Fair Pricing", color: "bg-emerald-50 text-emerald-700 border-emerald-100" },
-                { label: "Non-expiring", color: "bg-blue-50 text-blue-700 border-blue-100" },
-                { label: "API Access", color: "bg-purple-50 text-purple-700 border-purple-100" }
+                { label: "3-Month Rollover", color: "bg-blue-50 text-blue-700 border-blue-100" },
+                { label: "High Accuracy", color: "bg-purple-50 text-purple-700 border-purple-100" }
               ].map((pill) => (
                 <div key={pill.label} className={`border rounded-xl px-5 py-2.5 flex items-center gap-2 font-inter font-bold text-sm ${pill.color}`}>
                   <Check className="w-4 h-4" />

@@ -20,9 +20,9 @@ const features = [
   },
   { 
     label: "Speed", 
-    us: "250k/hr", 
-    avg: "173k/hr", 
-    competitorValues: ["180k/hr", "100k/hr", "240k/hr"], 
+    us: "250k emails/hr", 
+    avg: "173k emails/hr", 
+    competitorValues: ["180k emails/hr", "100k emails/hr", "240k emails/hr"], 
     detail: "Higher delivery rates" 
   },
   { 
@@ -49,9 +49,9 @@ const features = [
 ];
 
 const competitors = [
-  { logo: "/img/compare/zerobounce.png", alt: "ZeroBounce" },
-  { logo: "/img/compare/millionverifier.png", alt: "MillionVerifier" },
-  { logo: "/img/compare/neverbounce.png", alt: "NeverBounce" },
+  { logo: "/img/compare/zerobounce.png", alt: "ZeroBounce", name: "ZeroBounce" },
+  { logo: "/img/compare/millionverifier.png", alt: "MillionVerifier", name: "MillionVerifier" },
+  { logo: "/img/compare/neverbounce.png", alt: "NeverBounce", name: "NeverBounce" },
 ];
 
 export function Comparison() {
@@ -79,23 +79,30 @@ export function Comparison() {
         <div className="hidden md:block border border-white/10 bg-[#0B1221] rounded-2xl overflow-hidden shadow-2xl">
           <div className="grid grid-cols-5">
             
-            {/* Empty Top-Left Corner */}
-            <div className="p-8 border-b border-white/10 bg-[#0F172A]" /> 
-            
+            {/* Features Label Header */}
+            <div className="p-8 border-b border-white/10 bg-[#0F172A] flex items-center justify-center">
+               <span className="font-black uppercase tracking-widest text-[14px] text-white">Features</span>
+            </div> 
             {/* Our Brand Column Header */}
-            <div className="bg-[#0070F3] p-8 flex flex-col items-center justify-center gap-2 shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] relative z-20">
-              <span className="font-black uppercase tracking-widest text-[12px] italic text-white text-center">MailVerifier</span>
-              <Zap className="fill-white w-4 h-4 text-white" />
+            <div className="bg-gray p-8 flex items-center justify-center relative z-20 border-b border-slate-200">
+              <img 
+                src="/img/logo/MailVerifier_Horizontal.png" 
+                alt="MailVerifier" 
+                className="h-10 md:h-16 w-auto object-contain"
+              />
             </div>
 
-            {/* Competitor Brand Headers - FIXED IMAGES */}
+            {/* Competitor Brand Headers */}
             {competitors.map((comp, idx) => (
-              <div key={idx} className="p-8 flex items-center justify-center transition-all border-b border-white/10 border-l border-white/10 bg-[#0F172A]/50 group">
+              <div key={idx} className="p-8 flex items-center justify-center gap-3 transition-all border-b border-white/10 border-l border-white/10 bg-[#0F172A]/50 group">
                 <img 
                   src={comp.logo} 
                   alt={comp.alt} 
-                  className="h-8 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  className="h-12 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
+                <span className="text-m font-bold text-slate-300 group-hover:text-white transition-colors">
+                  {comp.name}
+                </span>
               </div>
             ))}
 
@@ -117,7 +124,7 @@ export function Comparison() {
                   </div>
                 </div>
 
-                {/* 3-5. Competitor Columns - BRIGHTENED TEXT */}
+                {/* 3-5. Competitor Columns */}
                 {competitors.map((_, compIdx) => (
                   <div key={compIdx} className={`p-7 flex items-center justify-center border-b border-white/10 border-l border-white/10 ${i % 2 === 0 ? 'bg-white/[0.02]' : 'bg-transparent'}`}>
                     <span className="text-slate-300 font-semibold tabular-nums text-sm text-center">
